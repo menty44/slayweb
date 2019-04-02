@@ -6,13 +6,14 @@
 <script src="/libs/jquery-2.1.1.min.js"></script>
 <script src="/libs/angular.min.js"></script>
 <script src="/libs/angular-route.js"></script>
+<script src="control.js"></script>
 
-<body >
+<body ng-controller="globalCtrl" ng-cloak>
 <!--<a href="#/!">Main</a>-->
 <!--<a href="#!profile">City 1</a>-->
 <!--<a href="#!register">City 2</a>-->
 <!--<a href="#!reset">City 2</a>-->
-<nav class=" pink lighten-1" role="navigation">
+<nav class=" pink lighten-1" role="navigation" ng-hide="auth === 1" ng-show="auth === 0">
     <div class="nav-wrapper ">
         <span style="float: left; padding-left: 2%">
             <a  id="logo-container" href="#" class="brand-logo">Logo</a>
@@ -29,6 +30,13 @@
         <ul class="right hide-on-med-and-down">
             <li><a href="#!login">
                 <button style="width: 100%;" class="btn waves-effect teal accent-3" type="submit" name="action">Login
+                </button>
+            </a>
+            </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#!register">
+                <button style="width: 100%;" class="btn waves-effect teal accent-3" type="submit" name="action">Register
                 </button>
             </a>
             </li>
@@ -63,77 +71,6 @@
 
 
 <div ng-view></div>
-
-<script>
-    var app = angular.module("slay", ["ngRoute"]);
-    app.config(function($routeProvider) {
-        $routeProvider
-            .when("/", {
-                templateUrl : "login.htm",
-            })
-            .when("/dashboard", {
-                templateUrl : "dashboard.htm",
-                controller : "dashboardCtrl"
-            })
-            .when("/profile", {
-                templateUrl : "profile.htm",
-                controller : "profileCtrl"
-            })
-            .when("/reset", {
-                templateUrl : "resetPassword.htm",
-                controller : "resetCtrl"
-            })
-            .when("/services", {
-                templateUrl : "services.htm",
-                controller : "servicesCtrl"
-            })
-            .when("/chat", {
-                templateUrl : "chat.htm",
-                controller : "chatCtrl"
-            })
-            .when("/notifications", {
-                templateUrl : "notifications.htm",
-                controller : "notificationsCtrl"
-            })
-            .when("/faq", {
-                templateUrl : "faq.htm",
-                controller : "faqCtrl"
-            })
-            .when("/login", {
-                templateUrl : "login.htm",
-                controller : "loginCtrl"
-            })
-            .when("/register", {
-                templateUrl : "register.htm",
-                controller : "registerCtrl"
-            });
-    });
-    app.controller("profileCtrl", function ($scope) {
-        $scope.msg = "I love London";
-    });
-    app.controller("resetCtrl", function ($scope) {
-        $scope.msg = "I love London";
-    });
-    app.controller("registerCtrl", function ($scope) {
-        $scope.msg = "I love Paris";
-    });
-    app.controller("chatCtrl", function ($scope) {
-        $scope.msg = "I love Paris";
-    });
-    app.controller("servicesCtrl", function ($scope) {
-        $scope.msg = "I love Paris";
-    });
-    app.controller("notificationsCtrl", function ($scope) {
-        $scope.msg = "I love Paris";
-    });
-    app.controller("faqCtrl", function ($scope) {
-        $scope.msg = "I love Paris";
-    });
-    app.controller("loginCtrl", function ($scope) {
-        $scope.msg = "I love Paris";
-    });
-
-</script>
 
 <!--  Scripts-->
 <script src="js/materialize.js"></script>

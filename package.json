@@ -1,0 +1,33 @@
+{
+  "name": "slay_web_admin",
+  "version": "1.0.0",
+  "description": "admin portal developed using angular 1",
+  "main": "control.js",
+  "dependencies": {
+    "eslint-plugin-json": "^1.4.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "load-grunt-tasks": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-eslint": "^21.0.0"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menty44/slayweb.git"
+  },
+  "author": "Fredrick Oluoch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/menty44/slayweb/issues"
+  },
+  "homepage": "https://github.com/menty44/slayweb#readme"
+}
