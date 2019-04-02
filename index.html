@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="slay">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<script src="/libs/jquery-2.1.1.min.js"></script>
+<script src="/libs/angular.min.js"></script>
+<script src="/libs/angular-route.js"></script>
+
+<body >
+<!--<a href="#/!">Main</a>-->
+<!--<a href="#!profile">City 1</a>-->
+<!--<a href="#!register">City 2</a>-->
+<!--<a href="#!reset">City 2</a>-->
+<nav class=" pink lighten-1" role="navigation">
+    <div class="nav-wrapper ">
+        <span style="float: left; padding-left: 2%">
+            <a  id="logo-container" href="#" class="brand-logo">Logo</a>
+        </span>
+
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#/!">
+                <button style="width: 100%;" class="btn waves-effect red" type="submit" name="action">Logout
+                </button>
+            </a>
+            </li>
+        </ul>
+
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#!login">
+                <button style="width: 100%;" class="btn waves-effect teal accent-3" type="submit" name="action">Login
+                </button>
+            </a>
+            </li>
+        </ul>
+
+        <ul class="right hide-on-med-and-down" style="padding-right: 30px">
+            <li><a href="#!chat">CHAT with me </a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#!faq">F.A.Q</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#!notifications">NOTIFICATIONS<span class="new badge">4</span></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <!--<li><a href="#!profile.htm">PROFILE</a></li>-->
+            <li><a href="#!profile">PROFILE</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#!dashboard">DASHBOARD</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+
+</nav>
+
+
+
+<div ng-view></div>
+
+<script>
+    var app = angular.module("slay", ["ngRoute"]);
+    app.config(function($routeProvider) {
+        $routeProvider
+            .when("/", {
+                templateUrl : "login.htm",
+            })
+            .when("/dashboard", {
+                templateUrl : "dashboard.htm",
+                controller : "dashboardCtrl"
+            })
+            .when("/profile", {
+                templateUrl : "profile.htm",
+                controller : "profileCtrl"
+            })
+            .when("/reset", {
+                templateUrl : "resetPassword.htm",
+                controller : "resetCtrl"
+            })
+            .when("/services", {
+                templateUrl : "services.htm",
+                controller : "servicesCtrl"
+            })
+            .when("/chat", {
+                templateUrl : "chat.htm",
+                controller : "chatCtrl"
+            })
+            .when("/notifications", {
+                templateUrl : "notifications.htm",
+                controller : "notificationsCtrl"
+            })
+            .when("/faq", {
+                templateUrl : "faq.htm",
+                controller : "faqCtrl"
+            })
+            .when("/login", {
+                templateUrl : "login.htm",
+                controller : "loginCtrl"
+            })
+            .when("/register", {
+                templateUrl : "register.htm",
+                controller : "registerCtrl"
+            });
+    });
+    app.controller("profileCtrl", function ($scope) {
+        $scope.msg = "I love London";
+    });
+    app.controller("resetCtrl", function ($scope) {
+        $scope.msg = "I love London";
+    });
+    app.controller("registerCtrl", function ($scope) {
+        $scope.msg = "I love Paris";
+    });
+    app.controller("chatCtrl", function ($scope) {
+        $scope.msg = "I love Paris";
+    });
+    app.controller("servicesCtrl", function ($scope) {
+        $scope.msg = "I love Paris";
+    });
+    app.controller("notificationsCtrl", function ($scope) {
+        $scope.msg = "I love Paris";
+    });
+    app.controller("faqCtrl", function ($scope) {
+        $scope.msg = "I love Paris";
+    });
+    app.controller("loginCtrl", function ($scope) {
+        $scope.msg = "I love Paris";
+    });
+
+</script>
+
+<!--  Scripts-->
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+</body>
+</html>
