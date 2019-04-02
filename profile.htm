@@ -1,1 +1,89 @@
-<p>profile. {{msg}}</p>
+<style>
+    .carousel .carousel-item{
+        width:100%;
+    }
+</style>
+<ul id="tabs-swipe-demo" class="tabs">
+    <li class="tab col s3"><a href="#swipe-1">Basic Information</a></li>
+    <li class="tab col s3"><a class="active" href="#swipe-2">Change Password</a></li>
+</ul>
+<div id="swipe-1" class="col s12 ">
+
+    <div class="">
+        <h5 style="float: left; padding-left: 1.8%">Basic Information
+            <hr>
+        </h5>
+        <div style="padding-top: 6%">
+            <div style="float:left; width: 45%; padding-left: 20%" class=" red">
+                1
+            </div>
+            <div style="float: right; width: 45%; padding-right: 20%;" class=" pink">
+                2</div>
+        </div>
+        <div class="row">
+            <div style="padding-right: 1%" class="col s7 push-s5 red">
+                <span class="flow-text"></span>
+                <div style="padding-right:5%; padding-left:5%;">
+
+
+                </div>
+            </div>
+            <div class="col s5 pull-s7 blue">
+                    <div style="padding-right:5%; padding-left:5%;">
+                <span class="flow-text">
+                        <div class="row">
+                                <div class="col s12 m7">
+                                    <div style="width: 100%" class="card">
+                                        <div style="background: blueviolet; width: 100" "card-image">
+
+                                        <span style="text-align: center; color: white;" class="card-title">
+                                            <h1>FO</h1></span>
+                                        </div>
+                                        <div class="card-content">
+                                        <p>I am a very simple card. I am good at containing small bits of information.
+                                        I am convenient because I require little markup to use effectively.</p>
+                                        </div>
+                                        <div class="card-action">
+                                        <a href="#">This is a link</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                </span></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div style="float: left; padding-left: 1.8%" id="swipe-2" class="col s12 ">
+    <h5 style="float: left; padding-left: 1.8%">Change Password
+        <hr>
+    </h5>
+    <div class="row">
+                <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                    <input id="pass" type="text" class="validate">
+                    <label for="pass">Enter new Password</label>
+                    </div>
+                    <button style="padding-left: 2%;" class="btn waves-effect pink" type="submit" name="action">Reset
+                            <i class="material-icons right">send</i>
+                        </button>
+                </div>
+
+                </div>
+                </form>
+            </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('ul.tabs').tabs({
+            swipeable : true,
+            responsiveThreshold : 1920
+        });
+    });
+</script>
