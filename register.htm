@@ -37,62 +37,72 @@
     <div class="split right">
 		<span class="flow-text">
 			<div class="col s12" style="">
-				<h1 style="color: #e91e63;">Register</h1>
-				<div class="row">
-					<div class="input-field col s12">
-						<input ng-model="user.firstname" id="fname" type="text" class="validate">
-							<label for="fname">First Name</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input ng-model="user.lastname" id="lname" type="text" class="validate">
-								<label for="lname">Last Name</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s12">
-								<input ng-model="user.gender" id="gender" type="text" class="validate">
-									<label for="gender">Gender</label>
-								</div>
-							</div>
-							<div class="row">
+				<h1 style="color: #e91e63;" ng-hide="regsuc === 0">Register</h1>
+				<span ng-show="regsuc === 0"><img src="img/suc.png"></span>
+				<div ng-hide="regsuc === 0">
+						<div class="row" >
 								<div class="input-field col s12">
-									<input ng-model="user.phone" id="phone" type="text" class="validate">
-										<label for="phone">Mobile Number</label>
-									</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input ng-model="user.role" id="role" type="text" class="validate">
-										<label for="role">Role</label>
-									</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input ng-model="user.email" id="email" type="email" class="validate">
-										<label for="email">Email</label>
+									<input ng-model="user.firstname" id="fname" type="text" class="validate">
+										<label for="fname">First Name</label>
 									</div>
 								</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input ng-model="user.password" id="password" type="password" class="validate">
-										<label for="password">Password</label>
+								<div class="row">
+									<div class="input-field col s12">
+										<input ng-model="user.lastname" id="lname" type="text" class="validate">
+											<label for="lname">Last Name</label>
+										</div>
 									</div>
-								</div>
-							<div>
-							<button ng-click="reg(user)" style="width: 100%;" class="btn waves-effect pink" type="submit" name="action">Register
-										<i class="material-icons right">send</i>
-									</button>
-								</div>
-								<!-- <div class="row"> -->
-								<a href="#!login">
-									<label style="color: #ed2f59; text-align: center">
-									Already Registered? Click here to login
-									</label>
-								</a>
+									<div class="row">
+										<div class="input-field col s12">
+											<input ng-model="user.gender" id="gender" type="text" class="validate">
+												<label for="gender">Gender</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<input ng-model="user.phone" id="phone" type="text" class="validate">
+													<label for="phone">Mobile Number</label>
+												</div>
+										</div>
+										<div class="row" hidden>
+											<div class="input-field col s12">
+												<input ng-model="user.role" id="role" type="text" class="" value="user" disabled>
+													<label for="role">Role</label>
+												</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<input ng-model="user.email" id="email" type="email" class="validate">
+													<label for="email">Email</label>
+												</div>
+											</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<input ng-model="user.password" id="password" type="password" class="validate">
+													<label for="password">Password</label>
+												</div>
+											</div>
+										<div>
+			
+												<div class="progress" ng-if="regload === 'load'" ng-hide="regsuc === 0">
+														<div class="indeterminate"></div>
+												</div>	
+										<button ng-click="reg(user)" style="width: 100%;" class="btn waves-effect pink" type="submit" name="action">Register
+													<i class="material-icons right">send</i>
+										</button>
+									</div>
+											<!-- <div class="row"> -->
+											<a href="#!login">
+												<label style="color: #ed2f59; text-align: center">
+												Already Registered? Click here to login
+												</label>
+											</a>
+				</div>
+				
 	<!-- </div> -->
 							</div>
+						
+								
 						</span>
     </div>
 </div>
