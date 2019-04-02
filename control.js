@@ -51,8 +51,26 @@ app.controller('profileCtrl', function ($scope) {
 app.controller('resetCtrl', function ($scope) {
   $scope.msg = 'I love London';
 });
-app.controller('registerCtrl', function ($scope) {
-  $scope.msg = 'I love Paris';
+app.controller('registerCtrl', function ($scope, $http) {
+    $scope.reg = function(d) {
+        console.log(d);
+        console.log(JSON.stringify(d));
+        // Simple GET request example:
+        $http({
+            method: 'POST',
+            url: 'http://de9e58a2.ngrok.io/register/add',
+            data: d
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            console.log(response);
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log(response);
+            });
+
+    };
 });
 app.controller('chatCtrl', function ($scope) {
   $scope.msg = 'I love Paris';
