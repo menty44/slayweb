@@ -3,6 +3,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
 <script src="/libs/jquery-2.1.1.min.js"></script>
 <script src="/libs/angular.min.js"></script>
 <script src="/libs/angular-route.js"></script>
@@ -13,15 +20,15 @@
 <!--<a href="#!profile">City 1</a>-->
 <!--<a href="#!register">City 2</a>-->
 <!--<a href="#!reset">City 2</a>-->
-<nav class=" pink lighten-1" role="navigation" ng-hide="auth === 1" ng-show="auth === 0">
+<nav class=" pink lighten-1" role="navigation" ng-show="auth === 0" ng-hide="auth !== 0">
     <div class="nav-wrapper ">
         <span style="float: left; padding-left: 2%">
-            <a  id="logo-container" href="#" class="brand-logo">Logo</a>
+            <a  id="logo-container" href="#" class="brand-logo">Logo | {{auth}}</a>
         </span>
 
         <ul class="right hide-on-med-and-down">
-            <li><a href="#/!">
-                <button style="width: 100%;" class="btn waves-effect red" type="submit" name="action">Logout
+            <li><a>
+                <button ng-click="logout()" style="width: 100%;" class="btn waves-effect red" type="submit" name="action">Logout
                 </button>
             </a>
             </li>

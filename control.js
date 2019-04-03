@@ -43,51 +43,90 @@ app.config(function ($routeProvider) {
         });
 });
 app.controller('globalCtrl', function ($scope, $rootScope) {
-    $rootScope.auth = 1;
+    var newauth = localStorage.getItem('auth');
+    var auth = JSON.parse(newauth);
+    $scope.auth = parseInt(auth);
+    // if($scope.auth === 0){
+    //     $rootScope.auth = 0;
+    //     $route.reload();
+    //     //location.reload();
+    // }else {
+    //     $rootScope.auth = 1;
+    // }
+
+    $rootScope.logout = function() {
+        $scope.auth = 1;
+        localStorage.clear();
+        localStorage.setItem('auth', '1');
+        window.location.assign('http://localhost:8000/#!/login');
+    }
+    
 });
 app.controller('profileCtrl', function ($scope) {
     $scope.msg = 'I love London';
 });
 app.controller('resetCtrl', function ($scope) {
-  $scope.msg = 'I love London';
+    $scope.msg = 'I love London';
 });
-app.controller('registerCtrl', function ($scope, $http) {
+app.controller('registerCtrl', function ($scope, $http, $window, $rootScope) {
     $scope.reg = function(d) {
+        $scope.regload = 'load';
         console.log(d);
         console.log(JSON.stringify(d));
         // Simple GET request example:
         $http({
             method: 'POST',
-            url: 'http://de9e58a2.ngrok.io/register/add',
+            url: 'http://localhost:4000/register/add',
             data: d
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
-            console.log(response);
+            console.log(response.data);
+            if(response.data.code === 0) {
+                $scope.regsuc = 0;
+                $rootScope.auth = 0;
+                function rider() {
+                    console.log("After 5.5 rider!");
+                    localStorage.setItem('auth', '0');
+                    $window.location.href = '/#!/dashboard';
+                    // window.location.assign('http://localhost:8000/#!/dashboard');
+                    // setTimeout($location.path('/dashboard'), 4500);
+                };
+                function timeFunction () {
+                    setTimeout(()=>{ 
+                        console.log("After 5.5 seconds!");
+                        rider();
+                        }, 2500);
+                    };
+                    timeFunction();
+                // setTimeout($location.path('/dashboard'), 4500);
+            }
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
+            console.log('error in registering');
             console.log(response);
+            alertify.error('Error In Registration Process.'); 
             });
 
     };
 });
 app.controller('chatCtrl', function ($scope) {
-  $scope.msg = 'I love Paris';
+    $scope.msg = 'I love Paris';
 });
 app.controller('servicesCtrl', function ($scope) {
-  $scope.msg = 'I love Paris';
+    $scope.msg = 'I love Paris';
 });
 app.controller('notificationsCtrl', function ($scope) {
-  $scope.msg = 'I love Paris';
+    $scope.msg = 'I love Paris';
 });
 app.controller('faqCtrl', function ($scope) {
-  $scope.msg = 'I love Paris';
+    $scope.msg = 'I love Paris';
 });
 /* eslint func-name-matching: "error" */
 // app.controller('loginCtrl', ($scope) => {
 //     $scope.login = 'I love login';
 // });
-app.controller('loginCtrl', function ($scope) {
-  $scope.login = 'I love login';
+app.controller('loginCtrl', function ($scope, $location, $http) {
+    $scope.login = 'I love login';
 });
