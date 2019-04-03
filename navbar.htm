@@ -1,0 +1,54 @@
+<nav class=" pink lighten-1" role="navigation" ng-show="auth === 0" ng-hide="auth !== 0">
+        <div class="nav-wrapper ">
+            <span style="float: left; padding-left: 2%">
+                <a  id="logo-container" href="#" class="brand-logo">Logo | {{auth}}</a>
+            </span>
+    
+            <ul class="right hide-on-med-and-down">
+                <li><a>
+                    <button ng-click="logout()" style="width: 100%;" class="btn waves-effect red" type="submit" name="action">Logout
+                    </button>
+                </a>
+                </li>
+            </ul>
+    
+            <ul class="right hide-on-med-and-down" ng-hide="auth === 0">
+                <li><a href="#!login">
+                    <button style="width: 100%;" class="btn waves-effect teal accent-3" type="submit" name="action">Login
+                    </button>
+                </a>
+                </li>
+            </ul>
+            <ul class="right hide-on-med-and-down" ng-hide="auth === 0">
+                <li><a href="#!register">
+                    <button style="width: 100%;" class="btn waves-effect teal accent-3" type="submit" name="action">Register
+                    </button>
+                </a>
+                </li>
+            </ul>
+    
+            <ul class="right hide-on-med-and-down" style="padding-right: 30px">
+                <li><a href="#!chat">CHAT with me </a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#!faq">F.A.Q</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#!notifications">NOTIFICATIONS<span class="new badge">4</span></a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <!--<li><a href="#!profile.htm">PROFILE</a></li>-->
+                <li><a href="#!profile">PROFILE</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#!dashboard">DASHBOARD</a></li>
+            </ul>
+    
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+    
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    
+    </nav>

@@ -67,19 +67,19 @@ app.controller('profileCtrl', function ($scope) {
 });
 app.controller('dashboardCtrl', function ($scope) {
     //Check if the current URL contains '#'
-    (function()
-    {
-        if( window.localStorage )
-        {
-            if( !localStorage.getItem('firstLoad') )
-            {
-                localStorage['firstLoad'] = true;
-                window.location.reload();
-            }
-            else
-                localStorage.removeItem('firstLoad');
-        }
-    })();
+    // (function()
+    // {
+    //     if( window.localStorage )
+    //     {
+    //         if( !localStorage.getItem('firstLoad') )
+    //         {
+    //             localStorage['firstLoad'] = true;
+    //             window.location.reload();
+    //         }
+    //         else
+    //             localStorage.removeItem('firstLoad');
+    //     }
+    // })();
     // if(document.URL.indexOf("#") === -1){
     //     // Set the URL to whatever it was plus "#".
     //     url = document.URL+"#";
