@@ -154,5 +154,33 @@ app.controller('faqCtrl', function ($scope) {
 //     $scope.login = 'I love login';
 // });
 app.controller('loginCtrl', function ($scope, $location, $http) {
-    $scope.login = 'I love login';
+    console.log('login controller');
+    $scope.loginLoad = 'check';
+    $scope.loginApp = function(d) {
+        console.log('login function scope');
+        $scope.loginLoad = 'load';
+        console.log(d);
+    //     console.log(JSON.stringify(d));
+    //     // Simple GET request example:
+    //     $http({
+    //         method: 'POST',
+    //         // url: 'http://localhost:4000/register/add',
+    //         url: 'http://demo1764871.mockable.io/reg',
+    //         data: d
+    //     }).then(function successCallback(response) {
+    //         // this callback will be called asynchronously
+    //         // when the response is available
+    //         console.log(response.data);
+    //         if(response.data.code === 0) {
+    //             $scope.regsuc = 0;
+    //             $window.location.href = '/#!/dashboard';
+    //         }
+    //     }, function errorCallback(response) {
+    //         // called asynchronously if an error occurs
+    //         // or server returns response with an error status.
+    //         console.log('error in lgin');
+    //         alertify.error('Invalid Login Credentials.');
+    //     });
+    //
+    };
 });
