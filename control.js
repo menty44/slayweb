@@ -45,7 +45,7 @@ app.config(function ($routeProvider) {
 app.controller('globalCtrl', function ($scope, $rootScope) {
     var newauth = localStorage.getItem('auth');
     var auth = JSON.parse(newauth);
-    $scope.auth = parseInt(auth);
+    $rootScope.auth = parseInt(auth);
     // if($scope.auth === 0){
     //     $rootScope.auth = 0;
     //     $route.reload();
@@ -65,6 +65,31 @@ app.controller('globalCtrl', function ($scope, $rootScope) {
 app.controller('profileCtrl', function ($scope) {
     $scope.msg = 'I love London';
 });
+app.controller('dashboardCtrl', function ($scope) {
+    //Check if the current URL contains '#'
+    (function()
+    {
+        if( window.localStorage )
+        {
+            if( !localStorage.getItem('firstLoad') )
+            {
+                localStorage['firstLoad'] = true;
+                window.location.reload();
+            }
+            else
+                localStorage.removeItem('firstLoad');
+        }
+    })();
+    // if(document.URL.indexOf("#") === -1){
+    //     // Set the URL to whatever it was plus "#".
+    //     url = document.URL+"#";
+    //     location = "#";
+    //
+    //     //Reload the page
+    //     location.reload(true);
+    // }
+    $scope.msg = 'I love London';
+});
 app.controller('resetCtrl', function ($scope) {
     $scope.msg = 'I love London';
 });
@@ -76,7 +101,8 @@ app.controller('registerCtrl', function ($scope, $http, $window, $rootScope) {
         // Simple GET request example:
         $http({
             method: 'POST',
-            url: 'http://localhost:4000/register/add',
+            // url: 'http://localhost:4000/register/add',
+            url: 'http://demo1764871.mockable.io/reg',
             data: d
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -91,13 +117,13 @@ app.controller('registerCtrl', function ($scope, $http, $window, $rootScope) {
                     $window.location.href = '/#!/dashboard';
                     // window.location.assign('http://localhost:8000/#!/dashboard');
                     // setTimeout($location.path('/dashboard'), 4500);
-                };
+                }
                 function timeFunction () {
                     setTimeout(()=>{ 
                         console.log("After 5.5 seconds!");
                         rider();
                         }, 2500);
-                    };
+                    }
                     timeFunction();
                 // setTimeout($location.path('/dashboard'), 4500);
             }
