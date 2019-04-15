@@ -7,7 +7,7 @@ app.config(function ($routeProvider) {
         })
         .when('/dashboard', {
             templateUrl : 'dashboard.htm',
-            controller : 'dashboardCtrl'
+            controller : 'globalCtrl'
         })
         .when('/profile', {
             templateUrl : 'profile.htm',
@@ -35,14 +35,14 @@ app.config(function ($routeProvider) {
         })
         .when('/login', {
             templateUrl : 'login.htm',
-            controller : 'loginCtrl'
+            controller : 'globalCtrl'
         })
         .when('/register', {
             templateUrl : 'register.htm',
-            controller : 'registerCtrl'
+            controller : 'globalCtrl'
         });
 });
-app.controller('globalCtrl', function ($scope, $rootScope) {
+app.controller('globalCtrl', function ($scope, $rootScope, $http, $window) {
     var newauth = localStorage.getItem('auth');
     var auth = JSON.parse(newauth);
     $rootScope.auth = parseInt(auth);
@@ -60,40 +60,7 @@ app.controller('globalCtrl', function ($scope, $rootScope) {
         localStorage.setItem('auth', '1');
         window.location.assign('http://localhost:8000/#!/login');
     }
-    
-});
-app.controller('profileCtrl', function ($scope) {
-    $scope.msg = 'I love London';
-});
-app.controller('dashboardCtrl', function ($scope) {
-    //Check if the current URL contains '#'
-    // (function()
-    // {
-    //     if( window.localStorage )
-    //     {
-    //         if( !localStorage.getItem('firstLoad') )
-    //         {
-    //             localStorage['firstLoad'] = true;
-    //             window.location.reload();
-    //         }
-    //         else
-    //             localStorage.removeItem('firstLoad');
-    //     }
-    // })();
-    // if(document.URL.indexOf("#") === -1){
-    //     // Set the URL to whatever it was plus "#".
-    //     url = document.URL+"#";
-    //     location = "#";
-    //
-    //     //Reload the page
-    //     location.reload(true);
-    // }
-    $scope.msg = 'I love London';
-});
-app.controller('resetCtrl', function ($scope) {
-    $scope.msg = 'I love London';
-});
-app.controller('registerCtrl', function ($scope, $http, $window, $rootScope) {
+
     $scope.reg = function(d) {
         $scope.regload = 'load';
         console.log(d);
@@ -136,6 +103,73 @@ app.controller('registerCtrl', function ($scope, $http, $window, $rootScope) {
             });
 
     };
+
+    console.log('login controller');
+    $scope.loginLoad = 'check';
+    $scope.loginApp = function(d) {
+        console.log('login function scope');
+        $scope.loginLoad = 'load';
+        console.log(d);
+        console.log(JSON.stringify(d));
+        // Simple GET request example:
+        $http({
+            method: 'POST',
+            // url: 'http://localhost:4000/register/add',
+            url: 'http://demo1764871.mockable.io/reg',
+            data: d
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            console.log(response.data);
+            if(response.data.code === 0) {
+                $scope.regsuc = 0;
+                localStorage.setItem('auth', 0);
+                $window.location.href = '/#!/dashboard';
+                
+            }
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log('error in lgin');
+            alertify.error('Invalid Login Credentials.');
+        });
+    
+    };
+    
+});
+app.controller('profileCtrl', function ($scope) {
+    $scope.msg = 'I love London';
+});
+app.controller('dashboardCtrl', function ($scope) {
+    //Check if the current URL contains '#'
+    // (function()
+    // {
+    //     if( window.localStorage )
+    //     {
+    //         if( !localStorage.getItem('firstLoad') )
+    //         {
+    //             localStorage['firstLoad'] = true;
+    //             location.reload(true);
+    //         }
+    //         else
+    //             localStorage.removeItem('firstLoad');
+    //     }
+    // })();
+    if(document.URL.indexOf("#") === -1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+    
+        //Reload the page
+        location.reload(true);
+    }
+    $scope.msg = 'I love London';
+});
+app.controller('resetCtrl', function ($scope) {
+    $scope.msg = 'I love London';
+});
+app.controller('registerCtrl', function ($scope, $http, $window, $rootScope) {
+    
 });
 app.controller('chatCtrl', function ($scope) {
     $scope.msg = 'I love Paris';
@@ -149,38 +183,6 @@ app.controller('notificationsCtrl', function ($scope) {
 app.controller('faqCtrl', function ($scope) {
     $scope.msg = 'I love Paris';
 });
-/* eslint func-name-matching: "error" */
-// app.controller('loginCtrl', ($scope) => {
-//     $scope.login = 'I love login';
-// });
 app.controller('loginCtrl', function ($scope, $location, $http) {
-    console.log('login controller');
-    $scope.loginLoad = 'check';
-    $scope.loginApp = function(d) {
-        console.log('login function scope');
-        $scope.loginLoad = 'load';
-        console.log(d);
-    //     console.log(JSON.stringify(d));
-    //     // Simple GET request example:
-    //     $http({
-    //         method: 'POST',
-    //         // url: 'http://localhost:4000/register/add',
-    //         url: 'http://demo1764871.mockable.io/reg',
-    //         data: d
-    //     }).then(function successCallback(response) {
-    //         // this callback will be called asynchronously
-    //         // when the response is available
-    //         console.log(response.data);
-    //         if(response.data.code === 0) {
-    //             $scope.regsuc = 0;
-    //             $window.location.href = '/#!/dashboard';
-    //         }
-    //     }, function errorCallback(response) {
-    //         // called asynchronously if an error occurs
-    //         // or server returns response with an error status.
-    //         console.log('error in lgin');
-    //         alertify.error('Invalid Login Credentials.');
-    //     });
-    //
-    };
+    
 });
