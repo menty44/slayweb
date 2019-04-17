@@ -1,1 +1,69 @@
-<p>login.</p>
+<style>
+    .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+    .left {
+        left: 0;
+        background-color: #e91e63;
+    }
+    .right {
+        right: 0;
+    }
+</style>
+
+<!--<div class="row" ng-controller="loginCtrl">-->
+<div class="row" >
+    <div  class="split left">
+        <!-- <div style="background: #e91e63; height: 100vh;" class="col s8 "> -->
+        <span class="flow-text">
+			<h1 style="padding-top:30%; padding-bottom:30%; color: white; text-align: center;">Waridi</h1>
+		</span>
+    </div>
+    <div class="split right">
+		<div class="flow-text">
+			<div class="col s12" style="padding-top: 28%">
+				<h1 style="color: #e91e63; padding-bottom: 10%">Login</h1>
+				<div class="row" ng-hide="loginLoad === 'load'">
+					<div class="input-field col s12">
+						<input ng-model="user.email" id="email" type="email" class="validate">
+							<label for="email">Email </label>
+						</div>
+					</div>
+					<div class="row" ng-hide="loginLoad === 'load'">
+						<div class="input-field col s12">
+							<input ng-model="user.password" id="password" type="password" class="validate">
+								<label for="password">Password</label>
+							</div>
+						</div>
+						<div class="progress" ng-if="loginLoad === 'load'" ng-hide="regsuc === 0">
+							<div class="indeterminate"></div>
+						</div>
+						<div ng-hide="loginLoad === 'load'">
+							<button ng-click="loginApp(user)" style="width: 100%;" class="btn waves-effect pink"  name="action">Submit
+
+								<i class="material-icons right">send</i>
+							</button>
+						</div>
+                <!-- <div class="row"> -->
+						<a href="#!register" ng-hide="loginLoad === 'load'">
+							<label style="color: #ed2f59; text-align: center">
+                                Not Registered? Click here to register
+                            </label>
+						</a>
+						<hr>
+							<a href="#!reset" ng-hide="loginLoad === 'load'">
+								<label style="color: #ed2f59; text-align: center">
+                                Forgot Password? Click here to reset
+                            </label>
+							</a>
+                <!-- </div> -->
+						</div>
+					</div>
+    </div>
+</div>
